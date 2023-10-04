@@ -1,4 +1,4 @@
- <?php
+<?php
 namespace Pj8912\PhpBardApi;
 
 class Bard {
