@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 namespace Pj8912\PhpBardApi;
 
@@ -13,7 +13,7 @@ class Bard {
     private $SNlM0e;
     private $cfb2h;
 
-    public function __construct($timeout = 6, $proxies = null, $session = null) {
+    public function __construct($key1, $key2, $timeout = 6, $proxies = null, $session = null) {
         $this->proxies = $proxies;
         $this->timeout = $timeout;
         $headers = [
@@ -32,7 +32,7 @@ class Bard {
         if ($session === null) {
             $this->session = curl_init();
             curl_setopt($this->session, CURLOPT_HTTPHEADER, $headers);
-            curl_setopt($this->session, CURLOPT_COOKIE, "__Secure-1PSID=" . $_ENV["BARD_API_KEY_X"]."; __Secure-1PSIDTS=" . $_ENV["BARD_API_KEY_Y"]);
+            curl_setopt($this->session, CURLOPT_COOKIE, "__Secure-1PSID=" . $key1."; __Secure-1PSIDTS=" . $key2);
             curl_setopt($this->session, CURLOPT_RETURNTRANSFER, true);
         } else {
             $this->session = $session;
