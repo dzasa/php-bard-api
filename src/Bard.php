@@ -50,6 +50,7 @@ class Bard {
         curl_setopt($this->session, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($this->session, CURLOPT_RETURNTRANSFER, true);
         $resp = curl_exec($this->session);
+        dump($resp);
         if (curl_getinfo($this->session, CURLINFO_HTTP_CODE) !== 200) {
             throw new \Exception("Response Status: " . curl_getinfo($this->session, CURLINFO_HTTP_CODE));
         }
@@ -85,6 +86,7 @@ class Bard {
         curl_setopt($this->session, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($this->session, CURLOPT_RETURNTRANSFER, true);
         $resp = curl_exec($this->session);
+        dump($resp);
         $resp_dict = json_decode(explode("\n", $resp)[3], true)[0][2];
         if ($resp_dict === null) {
             return ["content" => "Response Error: " . $resp . "."];
